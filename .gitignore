@@ -15,6 +15,9 @@ dist-ssr
 # Playwright MCP
 .playwright-mcp/
 
+# Steering（ローカル専用）
+docs/Steering/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
