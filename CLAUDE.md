@@ -36,6 +36,11 @@ npx tsc --noEmit # 型チェックのみ
 2. `src/data/explanations.ts` に同じ `id` で `Explanation` を追加
 3. 説明は初級エンジニアでも理解できる平易な日本語で記述
 
-## 設計書
+## 設計書・Steering
 
 - `docs/design.md` — 画面構成、データ構造、コンポーネント設計
+- `docs/Steering/steering.md` — プロジェクト方針・セッション履歴
+- `docs/Steering/handoff-*.md` — 前回セッションの引き継ぎ
+- `docs/Steering/daily-report-*.md` — 日報
+
+IMPORTANT: セッション開始時は `.claude/rules/session-startup.md` のルールに従い、必ず Steering ドキュメントを読んでからプロジェクトの全体像を把握すること。
