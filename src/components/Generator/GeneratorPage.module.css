@@ -1,0 +1,58 @@
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* ファイル選択画面 */
+.selector {
+  text-align: center;
+}
+
+.selectorTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 0.5rem;
+}
+
+.selectorHint {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0 0 2rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.25rem;
+  border: 2px solid #e2e6ef;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  border-color: #e94560;
+  box-shadow: 0 2px 12px rgba(233, 69, 96, 0.1);
+}
+
+.cardLabel {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.cardDesc {
+  font-size: 0.85rem;
+  color: #64748b;
+}

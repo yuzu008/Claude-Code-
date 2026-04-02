@@ -1,0 +1,73 @@
+.treeView {
+  height: 100%;
+  overflow-y: auto;
+  background: #f8f9fc;
+  border-right: 1px solid #e2e6ef;
+}
+
+.section {
+  padding: 0.75rem 0;
+}
+
+.section + .section {
+  border-top: 1px solid #e2e6ef;
+}
+
+.sectionTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8892a8;
+  padding: 0 1rem;
+  margin: 0 0 0.5rem;
+}
+
+.rootList,
+.childList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nodeItem {
+  margin: 0;
+}
+
+.nodeButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.45rem 0.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #2d3748;
+  text-align: left;
+  transition: background-color 0.15s;
+  border-left: 3px solid transparent;
+}
+
+.nodeButton:hover {
+  background: #edf0f7;
+}
+
+.nodeButton.selected {
+  background: #e2e8f4;
+  border-left-color: #e94560;
+  font-weight: 600;
+}
+
+.icon {
+  flex-shrink: 0;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.nodeName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

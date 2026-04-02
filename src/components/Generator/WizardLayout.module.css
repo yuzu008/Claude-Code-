@@ -1,0 +1,251 @@
+.wizard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.backButton {
+  align-self: flex-start;
+  border: none;
+  background: none;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
+}
+
+.backButton:hover {
+  color: #e94560;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+/* ステッププログレス */
+.progress {
+  display: flex;
+  gap: 0;
+  align-items: center;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+  position: relative;
+}
+
+.step::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: #e2e6ef;
+  margin-left: 0.5rem;
+}
+
+.step:last-child::after {
+  display: none;
+}
+
+.step.stepActive::after {
+  background: #e94560;
+}
+
+.stepDot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: #e2e6ef;
+  color: #64748b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.stepActive .stepDot {
+  background: #e94560;
+  color: #fff;
+}
+
+.stepDone .stepDot {
+  background: #10b981;
+  color: #fff;
+}
+
+.stepLabel {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.stepActive .stepLabel {
+  color: #1a1a2e;
+  font-weight: 600;
+}
+
+/* 左右分割ボディ */
+.body {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.formSide {
+  flex: 1;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #e2e6ef;
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-height: 300px;
+}
+
+.guideSide {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.guideInner {
+  background: #f8f9fc;
+  border: 1px solid #e2e6ef;
+  border-radius: 12px;
+  padding: 1.25rem;
+  position: sticky;
+  top: 1rem;
+}
+
+.guideHeading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e94560;
+}
+
+.guideDesc {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin: 0 0 1rem;
+  white-space: pre-line;
+}
+
+.guideExample {
+  margin-bottom: 1rem;
+}
+
+.guideExampleLabel {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #e94560;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.guideCode {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.guideCode code {
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+}
+
+.guideTips {
+  background: #f0f9ff;
+  border-left: 3px solid #3b82f6;
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1rem;
+}
+
+.guideTipsLabel {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 0.3rem;
+}
+
+.guideTipsText {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: #374151;
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* ナビゲーション */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navButton {
+  padding: 0.6rem 1.5rem;
+  border: 1px solid #e2e6ef;
+  border-radius: 8px;
+  background: #fff;
+  color: #374151;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.navButton:hover:not(:disabled) {
+  background: #f8f9fc;
+}
+
+.navButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.navNext {
+  background: #e94560;
+  color: #fff;
+  border-color: #e94560;
+}
+
+.navNext:hover:not(:disabled) {
+  background: #d63851;
+}
+
+.stepCount {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+/* タブレット・小さいノートPC対応 */
+@media (max-width: 1024px) {
+  .body {
+    flex-direction: column;
+  }
+
+  .guideSide {
+    width: 100%;
+  }
+}
