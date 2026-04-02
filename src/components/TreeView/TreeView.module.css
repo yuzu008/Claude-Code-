@@ -1,8 +1,8 @@
 .treeView {
   height: 100%;
   overflow-y: auto;
-  background: #f8f9fc;
-  border-right: 1px solid #e2e6ef;
+  background: var(--bg-base);
+  border-right: 1px solid var(--border-subtle);
 }
 
 .section {
@@ -10,17 +10,18 @@
 }
 
 .section + .section {
-  border-top: 1px solid #e2e6ef;
+  border-top: 1px solid var(--border-subtle);
 }
 
 .sectionTitle {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #8892a8;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
   padding: 0 1rem;
   margin: 0 0 0.5rem;
+  font-family: "JetBrains Mono", monospace;
 }
 
 .rootList,
@@ -39,30 +40,34 @@
   align-items: center;
   gap: 0.5rem;
   width: 100%;
-  padding: 0.45rem 0.5rem;
+  padding: 0.4rem 0.5rem;
   border: none;
   background: transparent;
   cursor: pointer;
-  font-size: 0.875rem;
-  color: #2d3748;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
   text-align: left;
-  transition: background-color 0.15s;
-  border-left: 3px solid transparent;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  border-left: 2px solid transparent;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 400;
 }
 
 .nodeButton:hover {
-  background: #edf0f7;
+  background: var(--bg-hover);
+  color: var(--text-primary);
 }
 
 .nodeButton.selected {
-  background: #e2e8f4;
-  border-left-color: #e94560;
-  font-weight: 600;
+  background: var(--accent-subtle);
+  border-left-color: var(--accent);
+  color: var(--accent);
+  font-weight: 500;
 }
 
 .icon {
   flex-shrink: 0;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1;
 }
 
@@ -70,4 +75,20 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* ツリー展開アニメーション */
+.childList {
+  animation: treeExpand 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes treeExpand {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

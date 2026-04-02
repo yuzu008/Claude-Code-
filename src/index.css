@@ -1,21 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+:root {
+  /* ベースカラー */
+  --bg-deepest: #06060c;
+  --bg-deep: #0a0a14;
+  --bg-base: #0e0e1a;
+  --bg-surface: #131322;
+  --bg-elevated: #1a1a2e;
+  --bg-hover: #1e1e36;
+
+  /* ボーダー */
+  --border-subtle: rgba(0, 212, 255, 0.08);
+  --border-default: rgba(0, 212, 255, 0.15);
+  --border-strong: rgba(0, 212, 255, 0.3);
+
+  /* アクセント */
+  --accent: #00d4ff;
+  --accent-dim: rgba(0, 212, 255, 0.6);
+  --accent-glow: rgba(0, 212, 255, 0.15);
+  --accent-subtle: rgba(0, 212, 255, 0.06);
+  --accent-secondary: #00ff88;
+  --accent-warn: #ff6b35;
+
+  /* テキスト */
+  --text-primary: #e8ecf4;
+  --text-secondary: #8892a8;
+  --text-muted: #555e72;
+  --text-accent: #00d4ff;
+
+  /* コード */
+  --code-bg: #080814;
+  --code-text: #c8d6e5;
+
+  /* エフェクト */
+  --glow-sm: 0 0 8px rgba(0, 212, 255, 0.12);
+  --glow-md: 0 0 20px rgba(0, 212, 255, 0.1);
+  --glow-lg: 0 0 40px rgba(0, 212, 255, 0.08);
+
+  /* トランジション */
+  --transition-fast: 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 body {
   margin: 0;
-  font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", system-ui,
-    "Segoe UI", Roboto, sans-serif;
+  font-family: "IBM Plex Sans JP", "Hiragino Kaku Gothic ProN", system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  color: #1a202c;
-  background: #fff;
+  color: var(--text-primary);
+  background: var(--bg-deepest);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   height: 100vh;
+}
+
+/* スクロールバー */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* セレクション */
+::selection {
+  background: rgba(0, 212, 255, 0.25);
+  color: #fff;
 }

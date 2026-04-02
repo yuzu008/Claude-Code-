@@ -7,18 +7,31 @@
 /* ファイル選択画面 */
 .selector {
   text-align: center;
+  animation: fadeSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .selectorTitle {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  color: #1a1a2e;
+  color: var(--text-primary);
   margin: 0 0 0.5rem;
+  font-family: "IBM Plex Sans JP", sans-serif;
 }
 
 .selectorHint {
-  font-size: 0.9rem;
-  color: #64748b;
+  font-size: 0.88rem;
+  color: var(--text-muted);
   margin: 0 0 2rem;
 }
 
@@ -33,26 +46,29 @@
   flex-direction: column;
   gap: 0.4rem;
   padding: 1.25rem;
-  border: 2px solid #e2e6ef;
-  border-radius: 12px;
-  background: #fff;
+  border: 1px solid var(--border-default);
+  border-radius: 4px;
+  background: var(--bg-surface);
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
 }
 
 .card:hover {
-  border-color: #e94560;
-  box-shadow: 0 2px 12px rgba(233, 69, 96, 0.1);
+  border-color: var(--accent);
+  box-shadow: var(--glow-sm);
+  transform: translateY(-2px);
 }
 
 .cardLabel {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1a1a2e;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: "JetBrains Mono", monospace;
 }
 
 .cardDesc {
-  font-size: 0.85rem;
-  color: #64748b;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
