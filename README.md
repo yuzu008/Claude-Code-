@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# Claude Code 設定ファイルガイド
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+社内エンジニア向けの **Claude Code 設定ファイル構成ガイド** Webアプリです。  
+初級エンジニアでも理解できるよう、平易な日本語で Claude Code の設定方法を解説します。
 
-Currently, two official plugins are available:
+## 機能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### ガイドタブ
+左のディレクトリツリーからファイルやフォルダをクリックすると、右のパネルに解説が表示されます。
 
-## React Compiler
+- **なぜ必要？** — そのファイルが存在する理由
+- **何をするもの？** — 役割の説明
+- **作り方（ステップバイステップ）** — 順を追った作成手順
+- **実際の例** — コードブロックで実例を表示
+- **ヒント** — 初心者向けの補足
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+対象ファイル:
+- `~/.claude/` 配下（CLAUDE.md、settings.json、hooks.json、rules/、commands/、skills/ 等）
+- プロジェクトルート（CLAUDE.md、.claude/ 配下）
 
-## Expanding the ESLint configuration
+### ファイル作成タブ
+ウィザード形式でClaude Code の設定ファイルを対話的に生成できます。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| ウィザード | 内容 |
+|---|---|
+| **CLAUDE.md** | 役割 → ルール → ツール → 注意事項 |
+| **settings.json** | ツール許可 → MCPサーバー設定 |
+| **hooks.json** | フック（自動処理）の設定 |
+| **ルールファイル** | テーマ別ルールの作成 |
+| **カスタムコマンド** | スラッシュコマンドの作成 |
+| **スキル** | Claudeの得意技の作成 |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+各ステップの右側にガイドパネル（説明・記入例・ヒント）が表示されます。  
+生成結果はコピーまたは `.md` / `.json` ファイルとしてダウンロードできます。
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 概念説明タブ
+Claude Code を使う上で知っておくべき4つの概念を、初心者向けにやさしく解説します。
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| 概念 | 内容 |
+|---|---|
+| **コンテキストウィンドウ** | Claudeが一度に覚えていられる情報量の限界 |
+| **ツール** | Claude Code が使える道具（Read, Write, Bash 等） |
+| **MCPサーバー** | 外部ツール連携の仕組み（Playwright, GitHub 等） |
+| **サブエージェント** | メインの会話を圧迫せず別室で作業するアシスタント |
+
+## 技術スタック
+
+- [Vite](https://vite.dev/) + [React](https://react.dev/) 19 + TypeScript
+- スタイリング: CSS Modules
+- 外部UIライブラリ不使用
+
+## セットアップ
+
+```bash
+# 依存パッケージのインストール
+npm install
+
+# 開発サーバーの起動
+npm run dev
+
+# ビルド
+npm run build
+
+# ビルド結果のプレビュー
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ディレクトリ構成
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── components/
+│   ├── Concepts/          # 概念説明タブ
+│   ├── ExplanationPanel/  # ガイドタブの説明パネル
+│   ├── Generator/         # ファイル作成タブ（ウィザード群）
+│   ├── Header/            # ヘッダー（タブ切り替え）
+│   └── TreeView/          # ガイドタブのツリー表示
+├── data/
+│   ├── concepts.ts        # 概念説明データ
+│   ├── explanations.ts    # ツリーノードの説明データ
+│   └── treeData.ts        # ツリー構造データ
+└── types/
+    └── index.ts           # 共通型定義
+```
+
+## コンテンツの追加方法
+
+### ガイドタブにノードを追加する
+
+1. `src/data/treeData.ts` にツリーノードを追加（`id` はユニーク）
+2. `src/data/explanations.ts` に同じ `id` で説明データを追加
+
+### 概念説明を追加する
+
+`src/data/concepts.ts` の `concepts` 配列に新しい概念オブジェクトを追加
+
+## ライセンス
+
+[MIT](LICENSE)
